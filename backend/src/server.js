@@ -7,8 +7,8 @@ require('dotenv').config();
 const routes = require('./routes');
 
 const app = express();
-//const PORT = process.env.PORT || 5001;
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5001;
+//const PORT = process.env.PORT
 
 const proxySetting = process.env.PROXY_HOPS || 1;
 app.set('trust proxy', Number(proxySetting));
@@ -25,7 +25,7 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  //origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'http://localhost:3000'
 }));
 
 // Body parsing middleware
